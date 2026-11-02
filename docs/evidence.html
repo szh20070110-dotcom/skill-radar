@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>技能雷达 · 验收记录</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 44px 22px 60px; background: radial-gradient(1000px 480px at 50% -8%, #1b2436, #080b12 72%); color: #e6ecf6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+  .wrap { max-width: 1060px; margin: 0 auto; }
+  .eyebrow { font-size: 12px; letter-spacing: 3px; color: #3ddc97; margin: 0 0 8px; }
+  h1 { margin: 0 0 8px; font-size: 27px; }
+  .sub { color: #93a1b8; font-size: 13.5px; margin: 0 0 24px; line-height: 1.7; }
+  h2 { font-size: 14px; color: #a9bcff; margin: 24px 0 10px; letter-spacing: 1px; }
+  pre { margin: 0; padding: 16px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; font-family: 'Cascadia Mono', Consolas, monospace; font-size: 12.5px; line-height: 1.8; color: #cdd9ea; overflow: auto; }
+  .ok { color: #3ddc97; }
+  .dim { color: #7f8ea6; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .card { padding: 14px 16px; border-radius: 12px; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); }
+  .card b { display: block; font-size: 21px; }
+  .card span { font-size: 12px; color: #8b9bb4; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">SKILL RADAR · FIND &amp; GAP</p>
+  <h1>技能雷达</h1>
+  <p class="sub">在华为云几百个技能里按关键词找人，找不到就自动沉淀成结构化问题单。索引来自门户搜索接口，178 个技能。</p>
+
+  <div class="grid">
+    <div class="card"><b class="ok">178</b><span>索引里的技能数</span></div>
+    <div class="card"><b class="ok">10</b><span>搜 ecs 命中</span></div>
+    <div class="card"><b>0</b><span>搜 bss 命中，生成问题单</span></div>
+  </div>
+
+  <h2>找人：skill-finder.mjs ecs</h2>
+  <pre>关键词: ecs  来源: 门户搜索接口  命中: 10
+  1. <span class="ok">huawei-cloud-ces-ecs-monitoring</span>
+     https://skills.huaweicloud.com/detail/huawei-cloud-ces-ecs-monitoring
+     Huawei Cloud ECS monitoring skill using Cloud Eye Service (CES)…
+  2. <span class="ok">huawei-cloud-ecs-query</span>
+     https://skills.huaweicloud.com/detail/huawei-cloud-ecs-query
+     查询华为云ECS弹性云服务器信息。仅用于查询，不包含创建/删除/规格变更等写操作…
+  3. <span class="ok">huawei-cloud-migration-vmware-ecs-private</span>
+     在私网环境下将 VMware 虚拟机迁移到华为云 ECS…
+  4. <span class="ok">huawei-cloud-ecs-vulnerability-auditor</span>
+     Audit Huawei Cloud ECS instances for security vulnerabilities…</pre>
+
+  <h2>找不到就开单：skill-finder.mjs bss --gap</h2>
+  <pre>关键词: bss  来源: 门户搜索接口  命中: 0
+  <span class="dim">未找到匹配的技能。</span>
+[gap] 已生成问题单: gaps\gap-20261103-030515-bss.md</pre>
+
+  <h2>问题单长什么样</h2>
+  <pre><span class="dim">---</span>
+title: "[能力缺口] 未找到与「cce-cost」相关的华为云技能"
+type: capability-gap
+keyword: "cce-cost"
+priority: P1
+reporter: "szh20070110-dotcom"
+index_source: "devdata2.huaweicloud.com/…/skill/search"
+index_total: 178
+<span class="dim">---</span>
+
+# 华为云技能问题单
+## 标题 / 问题类型 / 涉及技能 / 期望能力 / 当前替代方案
+## 复现步骤 / 优先级 / 提交人</pre>
+
+  <h2>离线也能用</h2>
+  <pre>缓存命中时直接用本地索引；接口失败自动回退到最近一次成功快照；
+--json 输出结构化结果，方便再喂给别的脚本。</pre>
+</div>
+</body>
+</html>

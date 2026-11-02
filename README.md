@@ -1,3 +1,5 @@
+![验收记录](resources/evidence.png)
+
 # skill-radar
 
 用本地零依赖 Node 脚本，等价复现「让 AI 帮你找到所需的华为云技能」实践：检索华为云 Skills 市场，找到能做事的技能；当能力缺失时，产出一份结构化问题单。
