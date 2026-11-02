@@ -1,0 +1,4 @@
+node_modules/
+.skill-finder-cache.json
+.codeartsdoer/
+*.log
