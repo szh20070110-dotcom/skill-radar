@@ -31,7 +31,7 @@
   <div class="grid">
     <div class="card"><b class="ok">178</b><span>索引里的技能数</span></div>
     <div class="card"><b class="ok">10</b><span>搜 ecs 命中</span></div>
-    <div class="card"><b>0</b><span>搜 bss 命中，生成问题单</span></div>
+    <div class="card"><b class="ok">3</b><span>搜 mysql：接口 0 条，本地补到 3 条</span></div>
   </div>
 
   <h2>找人：skill-finder.mjs ecs</h2>
@@ -47,12 +47,19 @@
   4. <span class="ok">huawei-cloud-ecs-vulnerability-auditor</span>
      Audit Huawei Cloud ECS instances for security vulnerabilities…</pre>
 
-  <h2>找不到就开单：skill-finder.mjs bss --gap</h2>
-  <pre>关键词: bss  来源: 门户搜索接口  命中: 0
-  <span class="dim">未找到匹配的技能。</span>
-[gap] 已生成问题单: gaps\gap-20261103-030515-bss.md</pre>
+  <h2>接口没命中不等于没有：skill-finder.mjs mysql</h2>
+  <pre>关键词: mysql  来源: 门户搜索接口  命中: 0
+  <span class="dim">→ 搜索接口没命中，自动降级到本地索引过滤</span>
+关键词: mysql  来源: 门户列表接口（本地过滤）  命中: 3
+  1. <span class="ok">huawei-cloud-rds-smart-service</span>
+     Huawei Cloud RDS full-scenario intelligent service covering all database engines…
+  2. <span class="ok">huawei-cloud-gaussdb-instance-management</span>
+     GaussDB for MySQL 兼容版 and GaussDB for openGauss 分布式版管理…
+  3. <span class="ok">huawei-cloud-rds-failover</span>
+     华为云 RDS 主备倒换演练工具，覆盖 prepare → execute → report 全流程。</pre>
 
-  <h2>问题单长什么样</h2>
+  <h2>真找不到就开单：skill-finder.mjs cce-cost --gap</h2><pre>关键词: cce-cost  来源: 公开列表页  命中: 0
+[gap] 已生成问题单: gaps/gap-cce-cost.md</pre><h2>问题单长什么样</h2>
   <pre><span class="dim">---</span>
 title: "[能力缺口] 未找到与「cce-cost」相关的华为云技能"
 type: capability-gap

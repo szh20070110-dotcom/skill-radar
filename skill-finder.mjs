@@ -386,13 +386,15 @@ async function searchKeyword(endpoints, keyword, opts) {
   const tried = [];
   try {
     const results = await searchByApi(endpoints, keyword, opts.limit);
-    return { keyword, results: results.slice(0, opts.limit), source: 'search-api', tried };
+    if (results.length) return { keyword, results: results.slice(0, opts.limit), source: 'search-api', tried };
+    tried.push('搜索接口: 0 命中，转本地索引');
   } catch (err) {
     tried.push(`搜索接口: ${err.message}`);
   }
   try {
     const results = await searchByList(endpoints, keyword, opts.limit);
-    return { keyword, results, source: 'list-api', tried };
+    if (results.length) return { keyword, results, source: 'list-api', tried };
+    tried.push('列表接口: 0 命中');
   } catch (err) {
     tried.push(`列表接口: ${err.message}`);
   }
